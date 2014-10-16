@@ -1,4 +1,5 @@
 var THEME = 'default';
+var PORT = 7879;
 var THEME_PATH = 'theme/static/themes/'+THEME+'/';
 
 /*****************************************/
@@ -26,7 +27,7 @@ gulp.task('watch', function() {
 
 gulp.task('server', function(){
 	connect.server({
-		port: 7879,
+		port: PORT,
 		middleware: function(connect, opt) {
 			return [cors()]
 		}
