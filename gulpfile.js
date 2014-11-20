@@ -1,6 +1,4 @@
-var THEME = 'default';
-var PORT = 7879;
-var THEME_PATH = 'theme/static/themes/'+THEME+'/';
+var PORT = 7878;
 
 /*****************************************/
 
@@ -12,11 +10,11 @@ var gulp = require('gulp'),
 	cors = require('cors')
 
 gulp.task('less', function() {
-	gulp.src(THEME_PATH + 'base.less')
+	gulp.src('src/main/webapp/**/base.less')
 		.pipe(sourcemaps.init())
 		.pipe(less())
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(THEME_PATH))
+		.pipe(gulp.dest('.tmp/theme/'))
 		.pipe(livereload())
 });
 
@@ -28,6 +26,7 @@ gulp.task('watch', function() {
 gulp.task('server', function(){
 	connect.server({
 		port: PORT,
+		root: '.tmp',
 		middleware: function(connect, opt) {
 			return [cors()]
 		}
